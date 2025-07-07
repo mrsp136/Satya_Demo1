@@ -1,37 +1,35 @@
 package stepDefination;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 
 
+import base.Base;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import page.LoginPage;
 
-public class Login {
-	
+public class Login extends Base{
+
+	LoginPage loginPage ;
 	@Given("Landed on Login page")
 		public void  Landed_on_Login_page() {
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver = new ChromeDriver();
-		System.out.println("Driver launched: " + driver);
-		driver.get("https://rahulshettyacademy.com/client");
+		initialize();
 	}
-	@When("^Enter valid (.*) and (.*)$" )
-	public void enter_valid_UserId_and_Password() {
+	@When("^Enter valid {string} and {string}$" )
+	public void enter_valid_UserId_and_Password(String use, String pass) {
+		loginPage.enterUsernameAndPassword(use, pass);
 		
 	}
 	@And("Click on Login button")
     public void click_on_Login_button() {
-		
+		loginPage.clickOnLoginButton();
 	}
     @Then("User Navigate to next page")
-    public void user_Navigate_to_next_page()
+    public void user_Navigate_to_next_page() throws InterruptedException
     {
-    	
+    	Thread.sleep(3000);
+    	loginPage.close();
     }
     
 }
