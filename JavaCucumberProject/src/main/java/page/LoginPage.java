@@ -16,7 +16,7 @@ public class LoginPage extends Base {
 		driver.findElement(By.id("userPassword")).sendKeys(Password);
 	}
 	public void clickOnLoginButton() {
-		driver.findElement(By.id("login"));
+		driver.findElement(By.id("login")).click();
 	}
 
 }
