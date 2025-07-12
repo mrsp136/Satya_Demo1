@@ -5,12 +5,9 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features ="Features",glue="stepDefination", monochrome = true 
+@CucumberOptions(features ="Features",glue="stepDefination", monochrome = true ,tags="@smoke"
    )
 
 public class TestRunner {
-
-
-
 
 }
